@@ -1,0 +1,20 @@
+input.ng-touched.ng-invalid{
+  border-color: #dc3545;
+}
+
+input.ng-valid{
+  border-color: #28a745;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  pointer-events: all !important;
+}
+
+.green-icon {
+  color: "#28a745";
+}
+
+.red-icon {
+  color: "#dc3545";
+}
