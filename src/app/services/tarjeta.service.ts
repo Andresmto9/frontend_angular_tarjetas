@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Subject, BehaviorSubject } from 'rxjs';
+import { TarjetaCredito } from '../models/TarjetaCredito';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +9,7 @@ export class TarjetaService {
   constructor() { }
 
   private tarjetasUpdated = new Subject<void>();
+  private actualizarFormulario = new BehaviorSubject<TarjetaCredito>({} as any) ;
 
   getTarjetasUpdatedListener() {
     return this.tarjetasUpdated.asObservable();
@@ -15,6 +17,14 @@ export class TarjetaService {
 
   notifyTarjetasUpdated() {
     this.tarjetasUpdated.next();
+  }
+
+  obtenerTarjeta(){
+    return this.actualizarFormulario.asObservable();
+  }
+
+  actualizar(tarjeta: any){
+    this.actualizarFormulario.next(tarjeta);
   }
 
   getData(url: string): Promise<any> {
